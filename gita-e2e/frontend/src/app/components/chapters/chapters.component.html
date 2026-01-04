@@ -1,0 +1,9 @@
+<div *ngFor="let chapter of chapters">
+  <h2>{{ chapter.chapter }} - {{ chapter.title }}</h2>
+  <ul>
+    <li *ngFor="let shloka of chapter.shlokas">
+      <strong>{{ shloka.number }}:</strong> {{ shloka.sanskrit }} <br />
+      <em>{{ shloka.translation }}</em>
+    </li>
+  </ul>
+</div>

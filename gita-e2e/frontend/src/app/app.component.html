@@ -1,0 +1,31 @@
+<h2>Select Chapter</h2>
+
+<select [(ngModel)]="selectedChapter" (ngModelChange)="loadShlokas()">
+  <option [ngValue]="null" disabled>Select Chapter</option>
+  <option *ngFor="let c of chapters" [ngValue]="c.chapter">
+    {{ c.chapter }} - {{ c.title }}
+  </option>
+</select>
+
+<hr />
+
+<h2>Select Shloka</h2>
+
+<select [(ngModel)]="selectedShloka" [disabled]="shlokas.length === 0">
+  <option [ngValue]="null" disabled>Select Shloka</option>
+  <option *ngFor="let s of shlokas" [ngValue]="s.number">
+    Shloka {{ s.number }}
+  </option>
+</select>
+
+<hr />
+
+<div *ngIf="selectedShlokaText">
+  <h3>
+    Chapter {{ selectedChapter }} – {{ selectedChapterTitle }} <br />
+    Shloka {{ selectedShlokaText.number }}
+  </h3>
+  <p><strong>Sanskrit:</strong> {{ selectedShlokaText.sanskrit }}</p>
+  <p><strong>Meaning:</strong> {{ selectedShlokaText.meaning }}</p>
+  <p><strong>Guidance:</strong> {{ selectedShlokaText.guidance }}</p>
+</div>
