@@ -1,31 +1,72 @@
-<h2>Select Chapter</h2>
+<div class="app-container">
 
-<select [(ngModel)]="selectedChapter" (ngModelChange)="loadShlokas()">
-  <option [ngValue]="null" disabled>Select Chapter</option>
-  <option *ngFor="let c of chapters" [ngValue]="c.chapter">
-    {{ c.chapter }} - {{ c.title }}
-  </option>
-</select>
+  <!-- Header -->
+  <header class="header">
+    <h1>🕉️ Bhagavad Gita</h1>
+    <p class="subtitle">Chapter-wise Shloka Explorer</p>
+  </header>
 
-<hr />
+  <!-- Controls -->
+  <div class="controls">
+    <div class="control">
+      <label>Select Chapter</label>
+      <select [(ngModel)]="selectedChapter" (ngModelChange)="loadShlokas()">
+        <option [ngValue]="null" disabled>Select Chapter</option>
+        <option *ngFor="let c of chapters" [ngValue]="c.chapter">
+          {{ c.chapter }} - {{ c.title }}
+        </option>
+      </select>
+    </div>
 
-<h2>Select Shloka</h2>
+    <div class="control">
+      <label>Select Shloka</label>
+      <select [(ngModel)]="selectedShloka" [disabled]="shlokas.length === 0">
+        <option [ngValue]="null" disabled>Select Shloka</option>
+        <option *ngFor="let s of shlokas" [ngValue]="s.number">
+          Shloka {{ s.number }}
+        </option>
+      </select>
+    </div>
+  </div>
 
-<select [(ngModel)]="selectedShloka" [disabled]="shlokas.length === 0">
-  <option [ngValue]="null" disabled>Select Shloka</option>
-  <option *ngFor="let s of shlokas" [ngValue]="s.number">
-    Shloka {{ s.number }}
-  </option>
-</select>
+  <!-- Shloka Display -->
+  <div *ngIf="selectedShlokaText" class="shloka-card">
 
-<hr />
+    <h2 class="chapter-title">
+      Chapter {{ selectedChapter }} – {{ selectedChapterTitle }}
+    </h2>
+    <h3 class="shloka-title">
+      Shloka {{ selectedShlokaText.number }}
+    </h3>
 
-<div *ngIf="selectedShlokaText">
-  <h3>
-    Chapter {{ selectedChapter }} – {{ selectedChapterTitle }} <br />
-    Shloka {{ selectedShlokaText.number }}
-  </h3>
-  <p><strong>Sanskrit:</strong> {{ selectedShlokaText.sanskrit }}</p>
-  <p><strong>Meaning:</strong> {{ selectedShlokaText.meaning }}</p>
-  <p><strong>Guidance:</strong> {{ selectedShlokaText.guidance }}</p>
+    <div class="card sanskrit">
+      <h4>Sanskrit</h4>
+      <p>{{ selectedShlokaText.sanskrit }}</p>
+    </div>
+
+    <div class="card meaning">
+      <h4>Meaning</h4>
+      <p>{{ selectedShlokaText.meaning }}</p>
+    </div>
+	
+	
+
+    <div class="card guidance">
+      <h4>Practical Guidance</h4>
+      <p>{{ selectedShlokaText.guidance }}</p>
+    </div>
+
+  </div>
+
+  <!-- Footer Disclaimer -->
+  <footer class="disclaimer">
+    <p>
+      <strong>Disclaimer:</strong>
+      This application is intended for educational and devotional purposes only.
+      Translations and interpretations are based on publicly available sources and
+      may vary. For deeper spiritual understanding, please consult authentic texts
+      and traditional commentaries.
+    </p>
+  </footer>
+
 </div>
