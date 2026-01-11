@@ -48,8 +48,8 @@ jobs:
 
     - name: Deploy to Cloud Run
       run: |
-        gcloud run deploy gita-api \
+        gcloud run deploy kshna-svc \
           --image asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/springboot-bgita-rest-demo/kshna-svc:${{ github.sha }} \
-          --region ${{ secrets.GCP_REGION }} \
+          --region asia-south1 \
           --platform managed \
           --allow-unauthenticated
