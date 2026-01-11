@@ -1,0 +1,51 @@
+name: Deploy Spring Boot API to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Java 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+
+    - name: Build Spring Boot JAR
+      working-directory: gita-e2e/backend
+      run: mvn clean package -DskipTests
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Setup gcloud
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Configure Docker for Artifact Registry
+      run: |
+        gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
+
+    - name: Build and Push Docker Image
+      working-directory: gita-e2e/backend
+      run: |
+        IMAGE=asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/gita-repo/gita-api:${{ github.sha }}
+        docker build -t $IMAGE .
+        docker push $IMAGE
+
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy gita-api \
+          --image asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/gita-repo/gita-api:${{ github.sha }} \
+          --region ${{ secrets.GCP_REGION }} \
+          --platform managed \
+          --allow-unauthenticated
