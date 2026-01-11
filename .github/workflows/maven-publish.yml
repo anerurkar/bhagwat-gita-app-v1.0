@@ -38,14 +38,18 @@ jobs:
     - name: Build and Push Docker Image
       working-directory: gita-e2e/backend
       run: |
-        IMAGE=asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.ARTIFACT_REPO }}/${{ secrets.APP_NAME }}:${{ github.sha }}
+        IMAGE=asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/springboot-bgita-rest-demo/kshna-svc:${{ github.sha }}
+        echo "GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}"
+        echo "ARCT_REPO : ${{ secrets.ARTIFACT_REPO }}"
+        echo "APP_NAME: ${{ secrets.APP_NAME }}"
+        echo "Docker image: $IMAGE"
         docker build -t $IMAGE .
         docker push $IMAGE
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy gita-api \
-          --image asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.ARTIFACT_REPO }}/${{ secrets.APP_NAME }}:${{ github.sha }} \
+          --image asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/springboot-bgita-rest-demo/kshna-svc:${{ github.sha }} \
           --region ${{ secrets.GCP_REGION }} \
           --platform managed \
           --allow-unauthenticated
