@@ -29,7 +29,7 @@ public class GitaApplication {
                 registry.addMapping("/**")
                         .allowedOrigins(
                             "http://localhost:4200",
-                            "http://kshna-svc-100157816972.europe-west1.run.app"
+                            "https://kshna-svc-100157816972.asia-south1.run.app"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
