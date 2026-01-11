@@ -13,7 +13,7 @@ public class GitaService {
 
     // Get all chapters
     public Object getAllChapters() {
-        return repo.getAllChapters().values();
+        return repo.getAllChaptersList();
     }
 
     // Get shlokas for a chapter
