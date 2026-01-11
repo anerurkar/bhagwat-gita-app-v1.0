@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   loadChapters(): void {
-    this.http.get<Chapter[]>('http://localhost:8080/api/gita/chapters')
+    this.http.get<Chapter[]>('https://kshna-svc-100157816972.asia-south1.run.app/api/gita/chapters')
       .subscribe({
         next: data => this.chapters = data,
         error: err => console.error('Error loading chapters', err)
