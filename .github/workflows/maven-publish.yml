@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Spring Boot JAR
       working-directory: gita-e2e/backend
-      run: mvn clean package -DskipTests
+      run: mvn clean install -DskipTests
 
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
@@ -38,7 +38,7 @@ jobs:
     - name: Build and Push Docker Image
       working-directory: gita-e2e/backend
       run: |
-        IMAGE=asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/gita-repo/gita-api:${{ github.sha }}
+        IMAGE=asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.ARTIFACT_REPO }}/${{ secrets.APP_NAME }}:${{ github.sha }}
         docker build -t $IMAGE .
         docker push $IMAGE
 
