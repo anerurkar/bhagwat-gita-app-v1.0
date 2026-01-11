@@ -1,12 +1,19 @@
 package com.gita;
 
 import org.springframework.boot.SpringApplication;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
+@OpenAPIDefinition(
+	    servers = {
+	        @Server(url = "https://kshna-svc-100157816972.asia-south1.run.app")
+	    }
+	)
 public class GitaApplication {
 
     public static void main(String[] args) {
