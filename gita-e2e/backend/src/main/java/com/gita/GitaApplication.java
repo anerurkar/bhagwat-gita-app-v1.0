@@ -13,15 +13,28 @@ public class GitaApplication {
         SpringApplication.run(GitaApplication.class, args);
     }
 
+	/*
+	 * @Bean public WebMvcConfigurer corsConfigurer() { return new
+	 * WebMvcConfigurer() {
+	 * 
+	 * @Override public void addCorsMappings(CorsRegistry registry) {
+	 * registry.addMapping("/**") .allowedOrigins("http://localhost:4200","")
+	 * .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS"); } }; }
+	 */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+                        .allowedOrigins(
+                            "http://localhost:4200",
+                            "http://kshna-svc-100157816972.europe-west1.run.app"
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*");
             }
         };
     }
+    
 }
