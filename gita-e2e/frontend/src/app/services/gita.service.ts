@@ -8,11 +8,13 @@ import { Chapter } from '../models/chapter.model';
 })
 export class GitaService {
  // private baseUrl = 'http://localhost:8080';
-  private baseUrl = 'https://kshna-svc-100157816972.asia-south1.run.app';
+  private basehttpsUrl = 'https://kshna-svc-100157816972.asia-south1.run.app';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  console.log('GitaService basehttpsUrl =', this.basehttpsUrl);
+  }
 
   getChapters(): Observable<Chapter[]> {
-    return this.http.get<Chapter[]>(`${this.baseUrl}/api/gita/chapters`);
+    return this.http.get<Chapter[]>(`${this.basehttpsUrl}/api/gita/chapters`);
   }
 }
