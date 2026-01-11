@@ -45,7 +45,7 @@ jobs:
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy gita-api \
-          --image asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/gita-repo/gita-api:${{ github.sha }} \
+          --image asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.ARTIFACT_REPO }}/${{ secrets.APP_NAME }}:${{ github.sha }} \
           --region ${{ secrets.GCP_REGION }} \
           --platform managed \
           --allow-unauthenticated
