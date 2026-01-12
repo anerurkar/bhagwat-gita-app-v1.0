@@ -3,7 +3,7 @@ name: Deploy Spring Boot API to Cloud Run
 on:
   push:
     branches:
-      - main 
+      - main  
 
 jobs:
   deploy:
