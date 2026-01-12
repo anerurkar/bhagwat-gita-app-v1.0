@@ -10,10 +10,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @OpenAPIDefinition(
-	    servers = {
-	        @Server(url = "https://kshna-svc-100157816972.asia-south1.run.app")
-	    }
-	)
+    servers = {
+        @Server(url = "http://localhost:8080", description = "Local"),
+        @Server(
+            url = "https://kshna-svc-100157816972.asia-south1.run.app",
+            description = "Cloud Run"
+        )
+    }
+)
 public class GitaApplication {
 
     public static void main(String[] args) {
