@@ -39,8 +39,11 @@ public class GitaApplication {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
+						    "http://localhost:3000",
                             "http://localhost:4200",
-                            "https://kshna-svc-100157816972.asia-south1.run.app"
+                            "https://kshna-svc-100157816972.asia-south1.run.app",
+							"https://*.web.app",
+                            "https://*.firebaseapp.com"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
