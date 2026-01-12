@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Shloka {
   number: number;
@@ -26,15 +27,20 @@ export class AppComponent implements OnInit {
 
   selectedChapter: number | null = null;
   selectedShloka: number | null = null;
+  private chaptersUrl = environment.apiBaseUrl + '/api/gita/chapters';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  console.log('Cloud Run API:', environment.apiBaseUrl);
+  console.log('chaptersUrl:', chaptersUrl);
+  }
 
   ngOnInit(): void {
     this.loadChapters();
   }
 
   loadChapters(): void {
-    this.http.get<Chapter[]>('https://kshna-svc-100157816972.asia-south1.run.app/api/gita/chapters')
+    //this.http.get<Chapter[]>('https://kshna-svc-100157816972.asia-south1.run.app/api/gita/chapters')
+	this.http.get<Chapter[]>(this.chaptersUrl)
       .subscribe({
         next: data => this.chapters = data,
         error: err => console.error('Error loading chapters', err)
