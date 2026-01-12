@@ -8,15 +8,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class GitaService {
- // private baseUrl = 'http://localhost:8080';
-//  private basehttpsUrl = 'https://kshna-svc-100157816972.asia-south1.run.app';
-  private basehttpsUrl = environment.apiBaseUrl;
+ 
+  
+  private basehttpsUrl1 = 'https://kshna-svc-100157816972.asia-south1.run.app';
 
   constructor(private http: HttpClient) {
-  console.log('GitaService basehttpsUrl =', this.basehttpsUrl);
+  console.log('GitaService basehttpsUrl =', this.basehttpsUrl1);
   }
 
   getChapters(): Observable<Chapter[]> {
-    return this.http.get<Chapter[]>(`${this.basehttpsUrl}/api/gita/chapters`);
+    return this.http.get<Chapter[]>(`${this.basehttpsUrl1}/api/gita/chapters`);
   }
 }

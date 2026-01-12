@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8080'
+  apiBaseUrl: 'https://kshna-svc-100157816972.asia-south1.run.app';
 };
