@@ -147,6 +147,37 @@ select {
   border-top: 1px solid #ddd;
 }
 
+.footer-modern {
+  background-color: #f1f3f5; /* soft light background */
+  color: #555;
+  padding: 25px 15px;
+  text-align: center;
+  border-top: 1px solid #dcdcdc;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05); /* subtle shadow for depth */
+  font-family: Arial, sans-serif;
+}
+
+.footer-modern .disclaimer {
+  font-size: 14px;
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+.footer-modern .copyright {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.footer-disclaimer p {
+  margin: 5px 0; /* spacing between lines */
+}
+
+.footer-copyright {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
 /* Mobile fallback */
 @media (max-width: 900px) {
   .content-grid {
