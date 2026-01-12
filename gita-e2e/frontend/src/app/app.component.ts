@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {
   console.log('Cloud Run API:', environment.apiBaseUrl);
-  console.log('chaptersUrl:', chaptersUrl);
+  console.log('chaptersUrl:', this.chaptersUrl);
   }
 
   ngOnInit(): void {
