@@ -30,11 +30,16 @@ public class GitaRepository {
 
                 if (is != null) {
                     Chapter chapter = mapper.readValue(is, Chapter.class);
+					  // Ensure totalShlokas is set (important)
+                    if (chapter.getShlokas() != null) {
+                        //chapter.setTotalShlokas(chapter.getShlokas().size());
+						chapter.setTotalNoOfShlokas(chapter.getShlokas().size());
+                    }
                     chapters.put(i, chapter);
                 } else {
                     // Fallback safety (should not happen)
                     chapters.put(i,
-                            new Chapter(i, "Chapter " + i, new ArrayList<>()));
+                            new Chapter(i, "Chapter " + i, new ArrayList<>(),0));
                 }
             }
 

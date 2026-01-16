@@ -32,6 +32,16 @@ public class GitaController {
     public Shloka getShloka(@RequestBody ShlokaRequest request) {
         return repo.getShloka(request.getChapter(), request.getNumber());
     }
+	
+	// 4️⃣ Get total number of shlokas in a chapter
+@GetMapping("/chapter/{chapterNumber}/count")
+public int getTotalShlokas(@PathVariable int chapterNumber) {
+    Chapter chapter = repo.getChapter(chapterNumber);
+    if (chapter != null && chapter.getShlokas() != null) {
+        return chapter.getShlokas().size();
+    }
+    return 0; // fallback if chapter not found
+}
 
     // Request class for POST /shloka
     public static class ShlokaRequest {
