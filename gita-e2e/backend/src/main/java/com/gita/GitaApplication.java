@@ -32,6 +32,7 @@ public class GitaApplication {
 	 * registry.addMapping("/**") .allowedOrigins("http://localhost:4200","")
 	 * .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS"); } }; }
 	 */
+	 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
