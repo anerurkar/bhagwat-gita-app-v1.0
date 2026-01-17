@@ -44,6 +44,7 @@ public class GitaApplication {
                             "https://kshna-svc-100157816972.asia-south1.run.app",
 							"https://*.web.app",
 							"https://gita-app-483814.web.app",
+							"https://gita-app-mobile.web.app",
                             "https://*.firebaseapp.com"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")

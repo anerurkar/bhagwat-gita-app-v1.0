@@ -1,8 +1,0 @@
-com\gita\model\Shloka.class
-com\gita\service\GitaService.class
-com\gita\GitaApplication.class
-com\gita\repository\GitaRepository.class
-com\gita\GitaApplication$1.class
-com\gita\controller\GitaController.class
-com\gita\controller\GitaController$ShlokaRequest.class
-com\gita\model\Chapter.class
